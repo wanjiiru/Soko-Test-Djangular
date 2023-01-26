@@ -27,9 +27,7 @@ export class ArtisansComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     this.artisanId = this.route.snapshot.paramMap.get('id');
-    console.log(this.artisanId);
     if(this.artisanId !== "0") this.fetchArtisan(this.artisanId);
-    console.log(this.artisanData);
     this.artisanForm = new FormGroup({
       firstName: new FormControl(this.artisanData.first_name),
       lastName: new FormControl(this.artisanData.last_name),
@@ -46,7 +44,6 @@ export class ArtisansComponent implements OnInit {
   }
   onArtisansFetch(){
     this.fetchArtisan(this.artisanId);
-    console.log(this.artisanData);
   }
   onSubmit(){
     const headers = new HttpHeaders({
@@ -66,7 +63,6 @@ export class ArtisansComponent implements OnInit {
       working_hours: this.artisanForm.value.workingHours,
       religion: this.artisanForm.value.religion,
     }
-    console.log(body);
     this.http.post<any>(
       'http://localhost:8080/api/artisans/',
       body,
@@ -86,7 +82,6 @@ export class ArtisansComponent implements OnInit {
         return resp;
       }))
       .subscribe((resp)=>{
-        console.log(resp);
         this.artisanData = resp;
         this.artisanForm = new FormGroup({
           firstName: new FormControl(resp.first_name),
