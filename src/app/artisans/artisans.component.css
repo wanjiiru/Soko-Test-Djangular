@@ -1,0 +1,11 @@
+
+.back-to-dashboard{
+    position: relative;
+    left: 60px;
+}
+.form-header{
+    position: relative;
+    left: 200px;
+    width: fit-content;
+    font-size: 30px;
+}

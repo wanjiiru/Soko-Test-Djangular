@@ -1,0 +1,44 @@
+<div class="section">
+    <a nz-button routerLink="/artisans/0" nzType="primary">+ New Artisan</a>
+</div>
+<div class="section">
+    <nz-table
+        #rowSelectionTable
+          nzShowPagination
+          nzShowSizeChanger
+          [nzData]="allArtisans"
+    >
+        <thead>
+            <tr>
+                <!-- <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th> -->
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let data of rowSelectionTable.data"> -->
+            <tr *ngFor="let data of rowSelectionTable.data">
+                <!-- <td
+                    [nzChecked]="setOfCheckedId.has(data.id)"
+                    [nzDisabled]="data.disabled"
+                    (nzCheckedChange)="onItemChecked(data.id, $event)"
+                ></td> -->
+                <td>{{ data.first_name }}</td>
+                <td>{{ data.last_name }}</td>
+                <td>{{ data.date_of_birth }}</td>
+                <td>{{ data.job_title }}</td>
+                <td>{{ data.company }}</td>
+                <td>{{ data.country.name }}</td>
+                <td>
+                    <a routerLink="/artisans/{{ data.id }}/"><span nz-icon nzType="edit"></span></a>
+                    <a nzDanger style="color: red;" (click)="onDeleteArtisan(data.id)"><span nz-icon nzDanger nzType="delete"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

@@ -1,0 +1,99 @@
+<div style="margin-top: 8px;">
+  <a nz-button nzType="link" routerLink="/" class="back-to-dashboard">
+    <span nz-icon nzType="left" nzTheme="outline"></span> Back to Dashboard
+  </a>
+</div>
+<div style="margin-top: 24px;">
+  <h4 class="form-header">Artisans Form</h4>
+  <form nz-form [formGroup]="artisanForm" (ngSubmit)="onSubmit()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-first-name">First Name</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input formControlName="firstName" type="text" id="id-first-name" placeholder="First Name">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-last-name">Last Name</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input formControlName="lastName" type="text" id="id-last-name" placeholder="Last Name">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-date-of-birth">Date of Birth</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <!-- <input nz-input formControlName="dateOfBirth" type="date" id="id-date-of-birth" placeholder="Date of Birth"> -->
+        <nz-date-picker formControlName="dateOfBirth" type="date" id="id-date-of-birth" placeholder="Date of Birth" ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-job-title">Job Title</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input formControlName="jobTitle" type="text" id="id-job-title" placeholder="Job Title">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-company">Company</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <input nz-input formControlName="company" type="text" id="id-company" placeholder="Company">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="id-country">Country</nz-form-label>
+      <nz-form-control [nzSpan]="8">
+        <!-- <input nz-input formControlName="country" type="text" id="id-country" placeholder="Country"> -->
+        <nz-select ngModel="Kenya" formControlName="country" id="id-country">
+          <nz-option nzValue="Kenya" nzLabel="Kenya"></nz-option>
+          <nz-option nzValue="Tanzania" nzLabel="Tanzania"></nz-option>
+          <nz-option nzValue="Uganda" nzLabel="Uganda"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item >
+    <div *ngIf="artisanForm.controls['country'].value === 'Kenya'">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-id-number">ID Number</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="idNumber" type="text" id="id-id-number" placeholder="ID Number">
+          </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-marital-status">Marital Status</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="maritalStatus" type="text" id="id-marital-status" placeholder="Marital Status">
+          </nz-form-control>
+        </nz-form-item >
+    </div>
+    <div *ngIf="artisanForm.controls['country'].value === 'Uganda'">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-number-of-children">ID Number</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="numberOfChildren" type="number" id="id-number-of-children" placeholder="Number of Children">
+          </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-marital-status">Marital Status</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="maritalStatus" type="text" id="id-marital-status" placeholder="Marital Status">
+          </nz-form-control>
+        </nz-form-item >
+    </div>
+    <div *ngIf="artisanForm.controls['country'].value === 'Tanzania'">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-working-hours">Working Hours</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="workingHours" type="number" id="id-working-hours" placeholder="Working Hours">
+          </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="id-religion">Religion</nz-form-label>
+          <nz-form-control [nzSpan]="8">
+            <input nz-input formControlName="religion" type="text" id="id-religion" placeholder="Religion">
+          </nz-form-control>
+        </nz-form-item >
+    </div>
+    <nz-form-item nz-row>
+      <nz-form-control [nzSpan]="8" [nzOffset]="6">
+        <button nz-button nzType="primary">Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
